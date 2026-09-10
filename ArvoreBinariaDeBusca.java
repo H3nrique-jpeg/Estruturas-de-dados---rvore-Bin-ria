@@ -90,13 +90,11 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
 
         return ret;
     }
-   
     public void guardeUmItem (X i) throws Exception
     {
         if (i==null) throw new Exception ("Informacao ausente");
 
-
-        if (i instanceof Cloneable) i=this.meuCloneDeX(i);
+        // if (i instanceof Cloneable) i=this.meuCloneDeX(i);
        
         if (this.raiz==null)
         {
@@ -136,23 +134,25 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
    
     public boolean temOItem (X i) throws Exception
     {
-       if (i == null) throw new Exception("Item inexistente");
-       if (i instanceof Cloneable ) i = this.meuCloneDeX(i);
-   
+        if (i == null) throw new Exception("Item inexistente");
+        if (i instanceof Cloneable ) i = this.meuCloneDeX(i);
+    
         if(this.raiz == null) return false;
-
-
         No atual = this.raiz;
-        while(True){
+        
+        while(true){
             int comparacao = i.compareTo(atual.getInfo());
-
-
-            if(comparacao == 0) return True;
-           
+            
+            if(comparacao < 0){
+                if (atual.getEsq().getInfo() == i) return true;
+                break;
+            } 
+            else
+                if(atual.getDir().getInfo() == i) return true;
+                break;
         }
-
-
-     
+        return false;
+        
     }
    
     @Override
