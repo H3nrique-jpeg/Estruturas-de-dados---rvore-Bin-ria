@@ -144,11 +144,11 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
             int comparacao = i.compareTo(atual.getInfo());
             
             if(comparacao < 0){
-                if (atual.getEsq().getInfo() == i) return true;
+                if (atual.getEsq().getInfo().equals(i)) return true;
                 break;
             } 
             else
-                if(atual.getDir().getInfo() == i) return true;
+                if(atual.getDir().getInfo().equals(i)) return true;
                 break;
         }
         return false;
