@@ -7,6 +7,7 @@ public class Main {
         arvore.guardeUmItem(65);
         arvore.guardeUmItem(6);
 
+        System.out.println(arvore);
         System.out.println(arvore.temOItem(70));
     }
 }

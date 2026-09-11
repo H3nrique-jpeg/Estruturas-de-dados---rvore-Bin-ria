@@ -151,19 +151,24 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
         
     }
     @Override 
-    public String toString(){
-        return this.raiz; 
-    }
-    @Override
-    public int hashCode(){
-        int hash = 17
-        hash = hash * 17 + (Integer(this.raiz)).hashCode();
-        hash = hash * 17 + (Integer(this.esq.getIntfo())).hashCode();
-        hash = hash * 17 + (Integer(this.dir.getIntfo())).hashCode();
+    public String toString()
+    {
+        String texto = " ";
 
-        return hash;
+        arvoreOrdenada(this.raiz, texto);
+
+        return texto.toString();
     }
-   
+    private void arvoreOrdenada(No atual, String texto)
+    {
+        if(atual == null) return;
+
+        arvoreOrdenada(atual.getEsq(), texto);
+        texto += atual.getInfo() + " ";
+        arvoreOrdenada(atual.getDir(), texto);
+
+    } 
+
     @Override
     public boolean equals (Object obj)
     {
