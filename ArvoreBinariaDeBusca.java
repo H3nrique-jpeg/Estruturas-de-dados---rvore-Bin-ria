@@ -1,9 +1,6 @@
 import java.lang.reflect.*;
 
 
-import javax.swing.plaf.TreeUI;
-
-
 public class ArvoreBinariaDeBusca <X extends Comparable<X>>
 {
     private class No
@@ -138,21 +135,33 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
         if (i instanceof Cloneable ) i = this.meuCloneDeX(i);
     
         if(this.raiz == null) return false;
+
         No atual = this.raiz;
-        
-        while(true){
+
+        while(atual != null){
             int comparacao = i.compareTo(atual.getInfo());
             
             if(comparacao < 0){
                 if (atual.getEsq().getInfo().equals(i)) return true;
-                break;
             } 
             else
                 if(atual.getDir().getInfo().equals(i)) return true;
-                break;
         }
         return false;
         
+    }
+    @Override 
+    public String toString(){
+        return this.raiz; 
+    }
+    @Override
+    public int hashCode(){
+        int hash = 17
+        hash = hash * 17 + (Integer(this.raiz)).hashCode();
+        hash = hash * 17 + (Integer(this.esq.getIntfo())).hashCode();
+        hash = hash * 17 + (Integer(this.dir.getIntfo())).hashCode();
+
+        return hash;
     }
    
     @Override
@@ -180,9 +189,7 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
         return true;
     }
    
-    // faça os demais métodos obrigatórios incluindo os "implements" apropriados
-} // fim da classe ArvoreBinariaDeBusca
-
+}
 
 
 
