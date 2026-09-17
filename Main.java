@@ -5,22 +5,27 @@ public class Main {
 
         // Raíz
         arvore.guardeUmItem(60);
+        System.out.println("Raíz da árvore: "+ arvore.getRaiz());
 
         // Nodos da esquerda
         arvore.guardeUmItem(20);
         arvore.guardeUmItem(21);
         arvore.guardeUmItem(18);
-        arvore.guardeUmItem(19);
+        arvore.guardeUmItem(17);
+        arvore.guardeUmItem(16);
         
         // Nodos da direita
         arvore.guardeUmItem(65);      
         arvore.guardeUmItem(64);
         arvore.guardeUmItem(66);
         arvore.guardeUmItem(63);
-
+        
+        //Print Árvore
         System.out.println(arvore);
 
+        arvore.excluirUmNodo(16);
+
         //Verificar a existencia de um item
-        System.out.println(arvore.temOItem(70));
+        //System.out.println(arvore.temOItem(50));
     }
 }

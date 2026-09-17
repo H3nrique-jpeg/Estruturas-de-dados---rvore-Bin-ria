@@ -128,7 +128,34 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
             }
         }
     }
-   
+
+    public X getRaiz() throws Exception
+    {
+        if(this.raiz == null) throw new Exception("Raíz inexistente");
+        return this.raiz.getInfo();
+    }
+    public void excluirUmNodo(X i) throws Exception{
+        
+        if(i == null) throw new Exception("Valor ausente");
+        if(this.raiz == null) throw new Exception("Árvore vazia");
+
+        No atual = this.raiz;
+        while (atual != null) {
+
+            int comparacao = i.compareTo(atual.getInfo());
+            
+            if(comparacao == 0){
+                if(atual.getDir() == null || atual.getEsq() == null ){
+                    atual.setInfo(null);
+                }
+            }
+            if(comparacao < 0){
+               atual = atual.getEsq();
+            }else{
+                atual = atual.getDir(); 
+            }
+        }    
+    }
     public boolean temOItem (X i) throws Exception
     {
         if (i == null) throw new Exception("Item inexistente");
@@ -139,17 +166,20 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
         No atual = this.raiz;
 
         while(atual != null){
+
             int comparacao = i.compareTo(atual.getInfo());
             
-            if(comparacao < 0){
-                if (atual.getEsq().getInfo().equals(i)) return true;
-            } 
-            else
-                if(atual.getDir().getInfo().equals(i)) return true;
+            if(comparacao == 0) return true;
+
+            if(comparacao < 0){ 
+                atual = atual.getEsq();
+            } else {
+                atual = atual.getDir();    
+            }
         }
-        return false;
-        
+        return false;  
     }
+
     @Override 
     public String toString()
     {
