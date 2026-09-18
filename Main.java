@@ -12,7 +12,7 @@ public class Main {
         arvore.guardeUmItem(21);
         arvore.guardeUmItem(18);
         arvore.guardeUmItem(17);
-        arvore.guardeUmItem(16);
+        arvore.guardeUmItem(15);
         
         // Nodos da direita
         arvore.guardeUmItem(65);      
@@ -23,7 +23,9 @@ public class Main {
         //Print Árvore
         System.out.println(arvore);
 
-        //arvore.excluirUmNodo(16);
+        arvore.excluirUmNodo(15);
+
+        System.out.println(arvore);
 
         //Verificar a existencia de um item
         //System.out.println(arvore.temOItem(50));
