@@ -183,16 +183,17 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
     @Override 
     public String toString()
     {
-        String texto = "( ";
+        String texto = " ";
 
         return arvoreOrdenada(this.raiz, texto);
     }
     private String arvoreOrdenada(No atual, String texto)
     {
-        if(atual == null) return texto;
+        if(atual == null) return texto += " - ";
 
+        texto+= " ( ";
         texto = arvoreOrdenada(atual.getEsq(), texto);
-        texto += "( " + atual.getInfo() + "  "; 
+        texto +=  atual.getInfo()+ " " + " "; 
         texto = arvoreOrdenada(atual.getDir(), texto);
         texto += " ) ";
 

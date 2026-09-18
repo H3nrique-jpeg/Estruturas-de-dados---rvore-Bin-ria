@@ -23,7 +23,7 @@ public class Main {
         //Print Árvore
         System.out.println(arvore);
 
-        arvore.excluirUmNodo(16);
+        //arvore.excluirUmNodo(16);
 
         //Verificar a existencia de um item
         //System.out.println(arvore.temOItem(50));
