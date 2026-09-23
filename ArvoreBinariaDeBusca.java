@@ -140,14 +140,25 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
         if(this.raiz == null) throw new Exception("Árvore vazia");
 
         No atual = this.raiz;
+        No pai = null;
         while (atual != null) {
 
             int comparacao = i.compareTo(atual.getInfo());
             
             if(comparacao == 0){
-                if(atual.getDir() == null || atual.getEsq() == null ){
-                    atual.setInfo(null);
+                if(atual.getDir() == null && atual.getEsq() == null ){
+                   if(pai == null) this.raiz = null;
+
+                   else if(pai.getEsq() == null)
+                    {
+                    pai.setEsq(null);
+                    }
+                   else{
+                    pai.setDir(null);
+                   }
+                   break;
                 }
+                pai = atual;
             }
             if(comparacao < 0){
                atual = atual.getEsq();

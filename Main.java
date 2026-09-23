@@ -23,7 +23,7 @@ public class Main {
         //Print Árvore
         System.out.println(arvore);
 
-        arvore.excluirUmNodo(15);
+        arvore.excluirUmNodo(66);
 
         System.out.println(arvore);
 
