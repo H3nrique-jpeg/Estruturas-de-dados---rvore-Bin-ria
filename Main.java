@@ -19,13 +19,13 @@ public class Main {
         arvore.guardeUmItem(64);
         arvore.guardeUmItem(66);
         arvore.guardeUmItem(63);
+        arvore.guardeUmItem(67);
         
         //Print Árvore
         System.out.println(arvore);
 
-        arvore.excluirUmNodo(66);
-
-        System.out.println(arvore);
+        System.out.println(arvore.getQtdNodosEsq());
+        System.out.println(arvore.getQtdNodosDir());
 
         //Verificar a existencia de um item
         //System.out.println(arvore.temOItem(50));

@@ -134,6 +134,30 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
         if(this.raiz == null) throw new Exception("Raíz inexistente");
         return this.raiz.getInfo();
     }
+    public int getQtdNodosEsq(){
+        
+        No atual = this.raiz;
+        int qtd = 0;
+
+        while(atual != null){
+            atual = atual.getEsq();
+            qtd++;
+        }
+
+        return qtd;
+    }
+    public int getQtdNodosDir(){
+        
+        No atual = this.raiz;
+        int qtd = 0;
+
+        while(atual != null){
+            atual = atual.getDir();
+            qtd++;
+        }
+
+        return qtd+1;
+    }
     public void excluirUmNodo(X i) throws Exception{
         
         if(i == null) throw new Exception("Valor ausente");
@@ -141,32 +165,51 @@ public class ArvoreBinariaDeBusca <X extends Comparable<X>>
 
         No atual = this.raiz;
         No pai = null;
+        boolean filhoEsquerdo = true;
         while (atual != null) {
 
             int comparacao = i.compareTo(atual.getInfo());
             
-            if(comparacao == 0){
-                if(atual.getDir() == null && atual.getEsq() == null ){
-                   if(pai == null) this.raiz = null;
-
-                   else if(pai.getEsq() == null)
-                    {
-                    pai.setEsq(null);
-                    }
-                   else{
-                    pai.setDir(null);
-                   }
-                   break;
-                }
-                pai = atual;
-            }
+            if(comparacao == 0) break;
+            
+            pai = atual;
             if(comparacao < 0){
                atual = atual.getEsq();
+               filhoEsquerdo = true;
             }else{
-                atual = atual.getDir(); 
+                atual = atual.getDir();
+                filhoEsquerdo = false; 
             }
-        }    
-    }
+            if(atual == null) throw new Exception("Remoção inexistente");
+        }
+        if(atual.getEsq() == null && atual.getDir() == null){
+            if(atual == this.raiz) this.raiz = null;
+            else if(filhoEsquerdo){
+                pai.setEsq(null);
+            }
+            else{
+                pai.setDir(null);
+            }
+        }
+            else if(atual.getEsq() == null && filhoEsquerdo){
+                if(atual==this.raiz) 
+                    this.raiz = atual.getDir();
+                else 
+                    pai.setEsq(atual.getDir()); 
+            }
+              else if(atual.getEsq() == null && !filhoEsquerdo){
+                if(atual==this.raiz) 
+                    this.raiz = atual.getDir();
+                else 
+                    pai.setEsq(atual.getDir()); 
+            }
+            else
+            {
+                No sucessor = null;
+                pai = atual;
+            }
+                
+        }   
     public boolean temOItem (X i) throws Exception
     {
         if (i == null) throw new Exception("Item inexistente");
